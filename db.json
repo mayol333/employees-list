@@ -1,0 +1,94 @@
+{
+    "employes": [
+        {
+            "id": "723e4567-e89b-12d3-a456-426614174006",
+            "firstName": "Sophia",
+            "lastName": "Miller",
+            "email": "sophia.miller@email.com",
+            "profession": "Architect",
+            "createdAt": "2014-06-18T10:55:00.000Z",
+            "updatedAt": "2014-07-22T13:20:00.000Z"
+        },
+        {
+            "id": "823e4567-e89b-12d3-a456-426614174007",
+            "firstName": "Liam",
+            "lastName": "Roberts",
+            "email": "liam.roberts@email.com",
+            "profession": "Financial Analyst",
+            "createdAt": "2016-03-08T12:45:00.000Z",
+            "updatedAt": "2016-04-12T15:10:00.000Z"
+        },
+        {
+            "id": "923e4567-e89b-12d3-a456-426614174008",
+            "firstName": "Olivia",
+            "lastName": "Turner",
+            "email": "olivia.turner@email.com",
+            "profession": "Biologist",
+            "createdAt": "2018-09-27T14:35:00.000Z",
+            "updatedAt": "2018-10-31T17:00:00.000Z"
+        },
+        {
+            "id": "a23e4567-e89b-12d3-a456-426614174009",
+            "firstName": "Noah",
+            "lastName": "Harrison",
+            "email": "noah.harrison@email.com",
+            "profession": "Human Resources Manager",
+            "createdAt": "2021-05-15T16:25:00.000Z",
+            "updatedAt": "2021-06-19T18:50:00.000Z"
+        },
+        {
+            "id": "b23e4567-e89b-12d3-a456-426614174010",
+            "firstName": "Emma",
+            "lastName": "Baker",
+            "email": "emma.baker@email.com",
+            "profession": "Civil Engineer",
+            "createdAt": "2023-01-10T18:15:00.000Z",
+            "updatedAt": "2023-02-14T20:40:00.000Z"
+        },
+        {
+            "id": "c23e4567-e89b-12d3-a456-426614174011",
+            "firstName": "Jackson",
+            "lastName": "Cooper",
+            "email": "jackson.cooper@email.com",
+            "profession": "Journalist",
+            "createdAt": "2015-11-03T09:05:00.000Z",
+            "updatedAt": "2015-12-07T11:30:00.000Z"
+        },
+        {
+            "id": "d23e4567-e89b-12d3-a456-426614174012",
+            "firstName": "Avery",
+            "lastName": "Ward",
+            "email": "avery.ward@email.com",
+            "profession": "Dentist",
+            "createdAt": "2017-07-23T10:50:00.000Z",
+            "updatedAt": "2017-08-27T13:15:00.000Z"
+        },
+        {
+            "id": "e23e4567-e89b-12d3-a456-426614174013",
+            "firstName": "Logan",
+            "lastName": "Fisher",
+            "email": "logan.fisher@email.com",
+            "profession": "Environmental Scientist",
+            "createdAt": "2019-04-12T12:40:00.000Z",
+            "updatedAt": "2019-05-17T15:05:00.000Z"
+        },
+        {
+            "id": "f23e4567-e89b-12d3-a456-426614174014",
+            "firstName": "Grace",
+            "lastName": "Morgan",
+            "email": "grace.morgan@email.com",
+            "profession": "Chef",
+            "createdAt": "2020-10-01T14:30:00.000Z",
+            "updatedAt": "2020-11-05T16:55:00.000Z"
+        },
+        {
+            "id": "g23e4567-e89b-12d3-a456-426614174015",
+            "firstName": "Ethan",
+            "lastName": "Bailey",
+            "email": "ethan.bailey@email.com",
+            "profession": "Physiotherapist",
+            "createdAt": "2022-06-08T16:20:00.000Z",
+            "updatedAt": "2022-07-13T18:45:00.000Z"
+        }
+    ]
+}
