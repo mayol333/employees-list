@@ -5,7 +5,9 @@ import { Select } from "./components/Select";
 import { Header } from "./components/Header";
 import { AddEmployeeButton } from "./components/AddEmployeeButton";
 import { Employee } from "./components/Employee";
-const professionsOptions = [
+import { useModalState } from "./hooks/modal";
+import { CreateEmployeeForm } from "./components/CreateEmployeeForm";
+export const professionsOptions = [
     "Architect",
     "Financial Analyst",
     "Biologist",
@@ -15,6 +17,8 @@ const professionsOptions = [
 export const App = () => {
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState("");
+    const [select, setSelect] = useState("");
+    const { modalOpen, handleModalOpen, handleModalClose } = useModalState();
     useEffect(() => {
         const getUsers = async () => {
             try {
@@ -32,12 +36,16 @@ export const App = () => {
         const { value } = event.target;
         setSearch(value);
     };
+    const handleSelect = (event) => {
+        const { value } = event.target;
+        setSelect(value);
+    };
     return (
         <section className="page-background">
             <div className="container">
                 <div className="top-bar">
                     <Header count={150} />
-                    <AddEmployeeButton />
+                    <AddEmployeeButton handleModalOpen={handleModalOpen} />
                 </div>
                 <div className="inputs">
                     <div>
@@ -50,6 +58,8 @@ export const App = () => {
                         <Select
                             placeholder="Search a profession"
                             options={professionsOptions}
+                            value={select}
+                            handleSelect={handleSelect}
                         />
                     </div>
                 </div>
@@ -72,10 +82,16 @@ export const App = () => {
                                         user.lastName.includes(search)
                                     );
                                 })
+                                .filter((user) => {
+                                    return select === ""
+                                        ? true
+                                        : user.profession === select;
+                                })
                                 .map((user) => (
                                     <Employee
                                         key={user.id}
-                                        name={`${user.firstName} ${user.lastName}`}
+                                        firstName={`${user.firstName}`}
+                                        lastName={`${user.lastName}`}
                                         email={user.email}
                                         profession={user.profession}
                                         created={user.createdAt}
@@ -84,6 +100,19 @@ export const App = () => {
                                 ))}
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div
+                className={`modal-background ${modalOpen ? "open" : "closed"}`}
+            >
+                <div className="modal">
+                    <span
+                        onClick={handleModalClose}
+                        className="modal-close-button"
+                    >
+                        X
+                    </span>
+                    <CreateEmployeeForm />
                 </div>
             </div>
         </section>

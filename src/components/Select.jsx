@@ -1,11 +1,12 @@
-export const Select = ({ placeholder, options }) => {
+export const Select = ({ placeholder, options, handleSelect, value }) => {
     return (
-        <select className="select">
-            <option value="" disabled selected hidden>
+        <select className="select" onChange={handleSelect}>
+            {" "}
+            <option value="" selected>
                 {placeholder}
             </option>
             {options.map((option, index) => (
-                <option key={index} value="">
+                <option key={index} value={option}>
                     {option}
                 </option>
             ))}

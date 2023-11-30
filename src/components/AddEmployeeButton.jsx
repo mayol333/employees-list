@@ -1,3 +1,7 @@
-export const AddEmployeeButton = () => {
-    return <button className="add-employee-button">+</button>;
+export const AddEmployeeButton = ({ handleModalOpen }) => {
+    return (
+        <button onClick={handleModalOpen} className="add-employee-button">
+            +
+        </button>
+    );
 };
