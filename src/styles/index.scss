@@ -140,3 +140,43 @@
     background-color: $button-background;
     margin-top: 50px;
 }
+.edit-button{
+    border-radius: 50%;
+}
+.edit-icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.delete-green-button{
+    width: 300px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: $delete-button;
+    padding: 20px;
+}
+.cancel-red-button{
+    width: 300px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: $cancel-button;
+    padding: 20px;
+}
+.delete-icon{
+    border-radius: 50%;
+}
+.delete-icon-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.delete-buttons-container{
+    display: flex;
+    justify-content: space-around;
+}
+.buttons-to-bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}

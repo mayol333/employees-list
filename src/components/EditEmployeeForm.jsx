@@ -1,12 +1,21 @@
 import { Select } from "./Select";
 import { professionsOptions } from "../App";
 import { useState } from "react";
-export const CreateEmployeeForm = ({ submit }) => {
-    const [select, setSelect] = useState("");
+import axios from "axios";
+export const EditEmployeeForm = ({
+    firstName,
+    lastName,
+    email,
+    profession,
+    refreshUsers,
+    id,
+    handleModalClose,
+}) => {
+    const [select, setSelect] = useState(profession);
     const [form, setForm] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
     });
     const handleSelect = (event) => {
         const { value } = event.target;
@@ -16,13 +25,24 @@ export const CreateEmployeeForm = ({ submit }) => {
         const { value } = event.target;
         setForm({ ...form, [key]: value });
     };
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (!form.firstName || !form.lastName || !form.email || !select) {
             return;
         }
-
-        submit({ ...form, select });
+        try {
+            await axios.patch(`http://localhost:8000/employes/${id}`, {
+                firstName: form.firstName,
+                lastName: form.lastName,
+                email: form.email,
+                profession: form.select,
+            });
+            const { data } = await axios.get("http://localhost:8000/employes");
+            refreshUsers(data);
+            handleModalClose();
+        } catch (error) {
+            console.log(error);
+        }
     };
     return (
         <form onSubmit={handleSubmit} className="modal-form">

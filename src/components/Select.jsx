@@ -1,6 +1,6 @@
 export const Select = ({ placeholder, options, handleSelect, value }) => {
     return (
-        <select className="select" onChange={handleSelect}>
+        <select value={value} className="select" onChange={handleSelect}>
             {" "}
             <option value="" selected>
                 {placeholder}

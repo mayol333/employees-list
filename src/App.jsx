@@ -6,7 +6,9 @@ import { Header } from "./components/Header";
 import { AddEmployeeButton } from "./components/AddEmployeeButton";
 import { Employee } from "./components/Employee";
 import { useModalState } from "./hooks/modal";
+import { v4 as uuidv4 } from "uuid";
 import { CreateEmployeeForm } from "./components/CreateEmployeeForm";
+import { Modal } from "./components/Modal";
 export const professionsOptions = [
     "Architect",
     "Financial Analyst",
@@ -40,6 +42,21 @@ export const App = () => {
         const { value } = event.target;
         setSelect(value);
     };
+    const submit = async (formState) => {
+        try {
+            await axios.post("http://localhost:8000/employes", {
+                id: uuidv4(),
+                firstName: formState.firstName,
+                lastName: formState.lastName,
+                email: formState.email,
+                profession: formState.select,
+            });
+            const { data } = await axios.get("http://localhost:8000/employes");
+            setUsers(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <section className="page-background">
             <div className="container">
@@ -72,6 +89,8 @@ export const App = () => {
                                 <th className="table-header">Profession</th>
                                 <th className="table-header">Created At</th>
                                 <th className="table-header">Updated At</th>
+                                <th className="edit-button"></th>
+                                <th className="delete-icon"></th>
                             </tr>
                         </thead>
                         <tbody className="table-body">
@@ -96,25 +115,17 @@ export const App = () => {
                                         profession={user.profession}
                                         created={user.createdAt}
                                         updated={user.updatedAt}
+                                        refreshUsers={setUsers}
+                                        id={user.id}
                                     />
                                 ))}
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div
-                className={`modal-background ${modalOpen ? "open" : "closed"}`}
-            >
-                <div className="modal">
-                    <span
-                        onClick={handleModalClose}
-                        className="modal-close-button"
-                    >
-                        X
-                    </span>
-                    <CreateEmployeeForm />
-                </div>
-            </div>
+            <Modal modalOpen={modalOpen} handleModalClose={handleModalClose}>
+                <CreateEmployeeForm submit={submit} />
+            </Modal>
         </section>
     );
 };
