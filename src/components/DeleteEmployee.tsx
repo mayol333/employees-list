@@ -1,5 +1,6 @@
 import axios from "axios";
-export const DeleteEmployee = ({ handleModalClose, id, refreshUsers }) => {
+import { DeleteEmployeeProps } from "./types";
+export const DeleteEmployee = ({ handleModalClose, id, refreshUsers }:DeleteEmployeeProps) => {
     const handleDelete = async () => {
         try {
             await axios.delete(`http://localhost:8000/employes/${id}`);

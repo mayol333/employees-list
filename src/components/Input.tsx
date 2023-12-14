@@ -1,4 +1,5 @@
-export const SearchInput = ({ handleSearch, value }) => {
+import { SearchInputProps } from "./types";
+export const SearchInput = ({ handleSearch, value }:SearchInputProps) => {
     return (
         <input
             onChange={handleSearch}

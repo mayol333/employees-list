@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEventHandler } from "react";
 import { SearchInput } from "./components/Input";
 import axios from "axios";
 import { Select } from "./components/Select";
@@ -9,6 +9,9 @@ import { useModalState } from "./hooks/modal";
 import { v4 as uuidv4 } from "uuid";
 import { CreateEmployeeForm } from "./components/CreateEmployeeForm";
 import { Modal } from "./components/Modal";
+import { User, FormState } from "components/types";
+
+
 export const professionsOptions = [
     "Architect",
     "Financial Analyst",
@@ -17,7 +20,7 @@ export const professionsOptions = [
     "Civil Engineer",
 ];
 export const App = () => {
-    const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState<User[]>([]);
     const [search, setSearch] = useState("");
     const [select, setSelect] = useState("");
     const { modalOpen, handleModalOpen, handleModalClose } = useModalState();
@@ -34,15 +37,15 @@ export const App = () => {
         };
         getUsers();
     }, []);
-    const handleSearch = (event) => {
+    const handleSearch:ChangeEventHandler<HTMLInputElement> = (event) => {
         const { value } = event.target;
         setSearch(value);
     };
-    const handleSelect = (event) => {
+    const handleSelect:ChangeEventHandler<HTMLSelectElement> = (event) => {
         const { value } = event.target;
         setSelect(value);
     };
-    const submit = async (formState) => {
+    const submit = async (formState:FormState) => {
         try {
             await axios.post("http://localhost:8000/employes", {
                 id: uuidv4(),

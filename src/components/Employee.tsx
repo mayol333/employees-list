@@ -4,6 +4,7 @@ import { Modal } from "./Modal";
 import { useModalState } from "../hooks/modal";
 import { EditEmployeeForm } from "./EditEmployeeForm";
 import { DeleteEmployee } from "./DeleteEmployee";
+import { EmployeeProps } from "./types";
 export const Employee = ({
     firstName,
     lastName,
@@ -13,7 +14,7 @@ export const Employee = ({
     updated,
     refreshUsers,
     id,
-}) => {
+}:EmployeeProps) => {
     const { modalOpen, handleModalOpen, handleModalClose } = useModalState();
     const {
         modalOpen: deleteModalOpen,

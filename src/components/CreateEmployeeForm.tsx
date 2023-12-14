@@ -1,48 +1,28 @@
 import { Select } from "./Select";
 import { professionsOptions } from "../App";
-import { useState } from "react";
-import axios from "axios";
-export const EditEmployeeForm = ({
-    firstName,
-    lastName,
-    email,
-    profession,
-    refreshUsers,
-    id,
-    handleModalClose,
-}) => {
-    const [select, setSelect] = useState(profession);
+import { ChangeEvent, ChangeEventHandler, FormEventHandler, useState } from "react";
+import { CreateEmployeeFormProps } from "./types";
+export const CreateEmployeeForm = ({ submit }:CreateEmployeeFormProps) => {
+    const [select, setSelect] = useState("");
     const [form, setForm] = useState({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
+        firstName: "",
+        lastName: "",
+        email: "",
     });
-    const handleSelect = (event) => {
+    const handleSelect:ChangeEventHandler<HTMLSelectElement> = (event) => {
         const { value } = event.target;
         setSelect(value);
     };
-    const handleForm = (key) => (event) => {
+    const handleForm = (key:string) => (event:ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target;
         setForm({ ...form, [key]: value });
     };
-    const handleSubmit = async (event) => {
+    const handleSubmit:FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
         if (!form.firstName || !form.lastName || !form.email || !select) {
             return;
         }
-        try {
-            await axios.patch(`http://localhost:8000/employes/${id}`, {
-                firstName: form.firstName,
-                lastName: form.lastName,
-                email: form.email,
-                profession: form.select,
-            });
-            const { data } = await axios.get("http://localhost:8000/employes");
-            refreshUsers(data);
-            handleModalClose();
-        } catch (error) {
-            console.log(error);
-        }
+        submit({ ...form, select });
     };
     return (
         <form onSubmit={handleSubmit} className="modal-form">

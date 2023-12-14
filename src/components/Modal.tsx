@@ -1,4 +1,5 @@
-export const Modal = ({ modalOpen, handleModalClose, children }) => {
+import { ModalProps } from "./types";
+export const Modal = ({ modalOpen, handleModalClose, children }:ModalProps) => {
     if (!modalOpen) {
         return null;
     }

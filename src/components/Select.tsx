@@ -1,4 +1,5 @@
-export const Select = ({ placeholder, options, handleSelect, value }) => {
+import { SelectProps } from "./types";
+export const Select = ({ placeholder, options, handleSelect, value }:SelectProps) => {
     return (
         <select value={value} className="select" onChange={handleSelect}>
             {" "}
